@@ -1,0 +1,72 @@
+.main-demo {
+  flex-flow: column;
+  align-items: flex-start;
+
+  .sidebar {
+      flex-flow: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      .chip{
+          flex: 1 25%;
+      }
+  }
+
+  .card-root {
+      width: 100%;
+      flex-grow: 1;
+      overflow: auto;
+      flex-flow: column;
+      justify-content: flex-start;
+  }
+
+  @include atomic-screen(tablet-desktop) {
+      flex-flow: row;
+
+      .sidebar {
+          //background: rebeccapurple;
+          display: flex;
+          flex-flow: column;
+          flex: 0 0 200px;
+          max-width: 200px;
+          padding: 0px 10px 0px 0px;
+          flex-flow: row;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-left: 5%;
+          .chip{
+            flex: 1 40%;
+          }
+      }
+
+      .card-root {
+          // background: green;
+          flex-wrap: wrap;
+          flex-grow: 1;
+          overflow: auto;
+          flex-flow: row wrap;
+          justify-content: space-evenly;
+      }
+
+      @include atomic-screen(tablet-only) {
+          .card {
+              //  max-width: 235px;
+              flex: 1 40%;
+          }
+      }
+
+      @include atomic-screen(tablet-above) {
+          .card {
+              // max-width: 250px;
+              // min-height: 300px;
+              flex: 1 20%;
+          }
+      }
+
+      @include atomic-screen(phone-only) {
+          .card {
+              width: 100%;
+              background: red;
+          }
+      }
+  }
+}

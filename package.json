@@ -1,5 +1,5 @@
 {
-  "name": "next-scss-jest-template",
+  "name": "spacex-launches-demo",
   "author": "jparasha",
   "version": "0.1.0",
   "private": false,
@@ -27,5 +27,6 @@
     "react-test-renderer": "^16.13.1",
     "identity-obj-proxy": "3.0.0"
   },
-  "keywords": ["next", "next-scss-template", "next-jest-template"]
+  "keywords": [],
+  "description": ""
 }
