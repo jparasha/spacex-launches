@@ -60,9 +60,9 @@ const getCards = (responseData) => {
 };
 
 //
-export default function SpaceXContainer(props) {
-  const [responseData, setResponseData] = useState(null);
-  const [isLoading, setLoader] = useState(true);
+function SpaceXContainer(props) {
+  const [responseData, setResponseData] = useState(props.responseData || null);
+  const [isLoading, setLoader] = useState(false);
 
   useEffect(() => {
     if (!responseData) {
@@ -87,8 +87,10 @@ export default function SpaceXContainer(props) {
           </div>
         </div>
       ) : (
-        <LoaderComponent isLoading={isLoading} />
-      )}
+          <LoaderComponent isLoading={isLoading} />
+        )}
     </>
   );
 }
+
+export default SpaceXContainer;
