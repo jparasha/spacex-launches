@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`next-scss-enzyme-boilerplate`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-[![Edit spacex-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/elegant-goodall-4mie3?fontsize=14&hidenavigation=1&theme=dark)
+[![Edit spacex-demo](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/spacex-demo-1s9cd?fontsize=14&hidenavigation=1&theme=dark)
 
 ## Access the app
 
