@@ -98,11 +98,13 @@
   border: 1px solid #121212;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  // max-width: 250px;
+  max-width: 340px;
+
   // min-height: 300px;
-  img{
+  img {
     // max-width: 200px;
     width: 100%;
+    min-height: 200px;
     object-fit: contain;
   }
 }
