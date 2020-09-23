@@ -10,16 +10,18 @@ function SpaceX(props) {
 // direct database queries.
 export async function getStaticProps() {
   // Call an external API endpoint to get responseData.
+  const { SPACEX_URL = 'https://api.spacexdata.com/v3/launches' } = process.env || {};
   // You can use any data fetching library
-  const res = await fetch("https://api.spacexdata.com/v3/launches?limit=100");
+  const res = await fetch(`${SPACEX_URL}?limit=100`);
   const responseData = await res.json();
   // By returning { props: responseData }, the Blog component
   // will receive `responseData` as a prop at build time
   return {
     props: {
-      responseData
-    },
-  }
+      responseData,
+      URL: SPACEX_URL
+    }
+  };
 }
 
 export default SpaceX;
