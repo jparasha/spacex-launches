@@ -6,7 +6,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`next-scss-e
 
 Project is hosted on vercel.
 
-[https://spacex-demo.vercel.app/](https://spacex-demo.vercel.app/)
+[https://spacex-launches-demo.vercel.app](https://spacex-launches-demo.vercel.app/)
 
 ## Getting Started
 
