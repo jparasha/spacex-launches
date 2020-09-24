@@ -70,7 +70,9 @@ const getCards = (initalData, responseData) => {
             </div>
         );
     });
-    const absoluteCards = cards.length ? cards : 'NO MATCHES FOUND!';
+
+const noMatch = <div className={'flex-default'}><h3 className={'flex-item-default'}>{CONSTANTS.ERROR_NO_FILTER_MATCH}</h3></div>;
+    const absoluteCards = cards.length ? cards : noMatch;
     return { absoluteCards, chips };
 };
 
