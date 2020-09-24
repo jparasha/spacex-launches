@@ -1,33 +1,37 @@
-
 // screen sizes
-  @mixin atomic-screen($size) {
-    $phone-only: "(max-width: 700px)";
-    $tablet-only: "(min-width: 700px) and (max-width: 1024px)";
-    $tablet-desktop : "(min-width: 700px)";
-    $tablet-above : "(min-width: 1025px)";
-    @if $size==phone-only {
-      @media only screen and #{$phone-only} {
-        @content;
-      }
-    }
-    @else if $size==tablet-only {
-      @media only screen and #{$tablet-only} {
-        @content;
-      }
-    }
-    @else if $size==tablet-desktop {
-      @media only screen and #{$tablet-desktop} {
-        @content;
-      }
-    }
-    @else if $size==tablet-above {
-      @media only screen and #{$tablet-above} {
-        @content;
-      }
-    }
-    @else {
-      @media only screen and #{$size} {
-        @content;
-      }
+@mixin atomic-screen($size) {
+  $phone-only: "(max-width: 700px)";
+  $tablet-only: "(min-width: 700px) and (max-width: 1024px)";
+  $tablet-desktop: "(min-width: 700px)";
+  $tablet-above: "(min-width: 1025px)";
+
+  @if $size==phone-only {
+    @media only screen and #{$phone-only} {
+      @content;
     }
   }
+
+  @else if $size==tablet-only {
+    @media only screen and #{$tablet-only} {
+      @content;
+    }
+  }
+
+  @else if $size==tablet-desktop {
+    @media only screen and #{$tablet-desktop} {
+      @content;
+    }
+  }
+
+  @else if $size==tablet-above {
+    @media #{$tablet-above} {
+      @content;
+    }
+  }
+
+  @else {
+    @media only screen and #{$size} {
+      @content;
+    }
+  }
+}

@@ -2,8 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Chip from '../../../atoms/chips';
 import CONSTANTS from '../../../utils/constants';
 import SpaceXComponent from '../Presentation';
-import { getQueryParams, appendQueryParams, getSpaceXData } from '../../../utils';
+import { appendQueryParams, getSpaceXData } from '../../../utils';
 
+/**
+ * renders chips based on params
+ * @param {*} data
+ * @param {*} handleChips
+ * @param {*} type
+ * @param {*} chipState
+ * @param {*} label
+ */
 const prepareChip = (data, handleChips, type, chipState, label) => {
     return (
         <React.Fragment>
@@ -29,6 +37,11 @@ const getChips = (handleChips, chipData = {}, chipState = {}) => {
     );
 };
 
+/**
+ * calculates cards and chips
+ * @param {*} initalData
+ * @param {*} responseData
+ */
 const getCards = (initalData, responseData) => {
     const cards = [];
     const chips = {
@@ -76,19 +89,25 @@ function SpaceXContainer(props) {
 
     // state
     const [isLoading, setLoader] = useState(false);
-    const [responseData, setResponseData] = useState(props.responseData || null);
-    const [chipState, setChipState] = useState({ year: '', launch: '', landing: '' });
+    const [hasComponentLoaded, setComponentLoadState] = useState(false);
+    const [responseData, setResponseData] = useState(props.requestData || props.responseData || null);
+    const [chipState, setChipState] = useState(props.chipData);
+
 
     //effects
     useEffect(() => {
-        setLoader(true);
-        const urlParams = prepareQueryParams(chipState);
-        getSpaceXData(urlParams, props.URL)
-            .then(data => {
-                setResponseData(data);
-                setLoader(false);
-            })
-            .catch(() => setLoader(false));
+        if (!hasComponentLoaded) {
+            setComponentLoadState(true);
+        } else {
+            setLoader(true);
+            const urlParams = prepareQueryParams(chipState);
+            getSpaceXData(urlParams, props.URL)
+                .then(data => {
+                    setResponseData(data);
+                    setLoader(false);
+                })
+                .catch(() => setLoader(false));
+        }
     }, [chipState]);
 
     // chips handler
@@ -107,6 +126,8 @@ function SpaceXContainer(props) {
                 break;
         }
     };
+
+    // get chips and cards
     const { absoluteCards: cards = [], chips } = getCards(responseData, props.responseData);
 
     return (
