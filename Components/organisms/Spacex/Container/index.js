@@ -76,19 +76,25 @@ function SpaceXContainer(props) {
 
     // state
     const [isLoading, setLoader] = useState(false);
-    const [responseData, setResponseData] = useState(props.responseData || null);
-    const [chipState, setChipState] = useState({ year: '', launch: '', landing: '' });
+    const [hasComponentLoaded, setComponentLoadState] = useState(false);
+    const [responseData, setResponseData] = useState(props.requestData || props.responseData || null);
+    const [chipState, setChipState] = useState(props.chipData);
+
 
     //effects
     useEffect(() => {
-        setLoader(true);
-        const urlParams = prepareQueryParams(chipState);
-        getSpaceXData(urlParams, props.URL)
-            .then(data => {
-                setResponseData(data);
-                setLoader(false);
-            })
-            .catch(() => setLoader(false));
+        if (!hasComponentLoaded) {
+            setComponentLoadState(true);
+        } else {
+            setLoader(true);
+            const urlParams = prepareQueryParams(chipState);
+            getSpaceXData(urlParams, props.URL)
+                .then(data => {
+                    setResponseData(data);
+                    setLoader(false);
+                })
+                .catch(() => setLoader(false));
+        }
     }, [chipState]);
 
     // chips handler
@@ -107,6 +113,7 @@ function SpaceXContainer(props) {
                 break;
         }
     };
+    // get chips and cards
     const { absoluteCards: cards = [], chips } = getCards(responseData, props.responseData);
 
     return (
