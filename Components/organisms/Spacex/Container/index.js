@@ -2,8 +2,16 @@ import React, { useState, useEffect } from 'react';
 import Chip from '../../../atoms/chips';
 import CONSTANTS from '../../../utils/constants';
 import SpaceXComponent from '../Presentation';
-import { getQueryParams, appendQueryParams, getSpaceXData } from '../../../utils';
+import { appendQueryParams, getSpaceXData } from '../../../utils';
 
+/**
+ * renders chips based on params
+ * @param {*} data
+ * @param {*} handleChips
+ * @param {*} type
+ * @param {*} chipState
+ * @param {*} label
+ */
 const prepareChip = (data, handleChips, type, chipState, label) => {
     return (
         <React.Fragment>
@@ -29,6 +37,11 @@ const getChips = (handleChips, chipData = {}, chipState = {}) => {
     );
 };
 
+/**
+ * calculates cards and chips
+ * @param {*} initalData
+ * @param {*} responseData
+ */
 const getCards = (initalData, responseData) => {
     const cards = [];
     const chips = {
@@ -113,6 +126,7 @@ function SpaceXContainer(props) {
                 break;
         }
     };
+
     // get chips and cards
     const { absoluteCards: cards = [], chips } = getCards(responseData, props.responseData);
 
