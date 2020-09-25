@@ -1,8 +1,20 @@
-import React from "react";
-import SpaceXComponent from "../Components/organisms/Spacex";
+import React from 'react';
+import Head from 'next/head';
+import Footer from '../Components/organisms/Footer';
+import SpaceXComponent from '../Components/organisms/Spacex';
 
 function SpaceX(props) {
-  return <SpaceXComponent {...props} />;
+  return (
+    <div className={'container'}>
+      <Head>
+        <title>SPACEX LAUNCHES | Demo</title>
+        <link rel='icon' href='/favicon.ico' />
+        <meta name={'description'} content={'Filter all spacex launches in one go! '} />
+      </Head>
+      <SpaceXComponent {...props} />
+      <Footer />
+    </div>
+  );
 }
 
 

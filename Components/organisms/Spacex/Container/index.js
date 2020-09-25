@@ -60,7 +60,7 @@ const getCards = (initalData, responseData) => {
         // prepare cards
         cards.push(
             <div className='card flex-default' key={i}>
-                <img src={element.links.mission_patch_small} alt={element.mission_name} />
+                <img src={element.links.mission_patch_small} alt={element.mission_name} loading={'lazy'} />
                 <p className='card-title'>
                     {element.mission_name} #{element.flight_number}
                 </p>
@@ -71,7 +71,7 @@ const getCards = (initalData, responseData) => {
         );
     });
 
-const noMatch = <div className={'flex-default'}><h3 className={'flex-item-default'}>{CONSTANTS.ERROR_NO_FILTER_MATCH}</h3></div>;
+    const noMatch = <div className={'flex-default'}><h3 className={'flex-item-default'}>{CONSTANTS.ERROR_NO_FILTER_MATCH}</h3></div>;
     const absoluteCards = cards.length ? cards : noMatch;
     return { absoluteCards, chips };
 };
