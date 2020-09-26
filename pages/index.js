@@ -6,7 +6,6 @@ export default function Home() {
     <div className={"container"}>
       <Head>
         <title>SPACEX LAUNCHES | Home</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <HomePage />

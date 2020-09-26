@@ -8,8 +8,6 @@ function SpaceX(props) {
     <div className={'container'}>
       <Head>
         <title>SPACEX LAUNCHES | Demo</title>
-        <link rel='icon' href='/favicon.ico' />
-        <meta name={'description'} content={'Filter all spacex launches in one go! '} />
       </Head>
       <SpaceXComponent {...props} />
       <Footer />
@@ -24,12 +22,12 @@ function SpaceX(props) {
 export async function getServerSideProps(context) {
   // Call an external API endpoint to get responseData.
   const { SPACEX_URL = 'https://api.spacexdata.com/v3/launches' } = process.env || {};
-  // You can use any data fetching library
-  const res = await fetch(`${SPACEX_URL}?limit=100`);
-  const responseData = await res.json();
+  const { query = {}, req: { url = '/' }, res = {} } = context || {};
+  res.setHeader('Cache-Control', 's-maxage=2592000, stale -while-revalidate');
+  const resData = await fetch(`${SPACEX_URL}?limit=100`);
+  const responseData = await resData.json();
   // By returning { props: responseData }, the component
   // will receive `responseData` as a prop at run time
-  const { query = {}, req: { url = '/' } } = context || {};
   const { launch_year = '', launch_success = '', land_success = '' } = query;
   const chipData = { year: launch_year, launch: launch_success, landing: land_success };
   const isQueryAvailable = launch_success || launch_year || land_success;
