@@ -7,7 +7,6 @@ class MyDocument extends Document {
             <Html lang="en">
                 <Head>
                     <link rel='icon' href='/favicon.ico' />
-                    <link rel='preload' href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap' rel='stylesheet' />
                     <meta charSet="utf-8" />
                     <meta name={'description'} content={'Filter all spacex launches in one go! '} />
                 </Head>
