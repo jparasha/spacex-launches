@@ -8,8 +8,6 @@ function SpaceX(props) {
     <div className={'container'}>
       <Head>
         <title>SPACEX LAUNCHES | Demo</title>
-        <link rel='icon' href='/favicon.ico' />
-        <meta name={'description'} content={'Filter all spacex launches in one go! '} />
       </Head>
       <SpaceXComponent {...props} />
       <Footer />
